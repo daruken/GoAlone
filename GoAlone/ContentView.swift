@@ -8,9 +8,27 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
+    
+    @State var isActive:Bool = false
+    
     var body: some View {
-        Text("Hello, World!")
+        
+        VStack {
+            if self.isActive {
+                MainView()
+            } else {
+                IntroView()
+            }
+        }.onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                withAnimation {
+                    self.isActive = true
+                }
+            }
+        }
+        
     }
 }
 
