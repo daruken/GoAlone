@@ -84,7 +84,7 @@ extension MapViewController:MKMapViewDelegate{
     @objc func savedPin(){
         guard let delegate = delegate, let placemark = selectedPin else { return}
         delegate.saveLocation(placemark: placemark)
-    }
+     }
 }
 
 extension MapViewController:UISearchBarDelegate{
