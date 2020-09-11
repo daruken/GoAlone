@@ -12,9 +12,8 @@ import SwiftUI
 struct ContentView: View {
     
     @State var isActive:Bool = false
-    
+
     var body: some View {
-        
         VStack {
             if self.isActive {
                 MainView()

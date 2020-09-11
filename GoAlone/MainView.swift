@@ -9,15 +9,19 @@
 import SwiftUI
 
 struct MainView: View {
+
     var body: some View {
-        
         NavigationView {
             VStack {
                 Text("Welcome to your world!")
                 .font(.title)
-
+                
+                NavigationLink(destination: MapSearchView()) {
+                    Text("Search location!")
+                }.padding(.top, 60)
+                
                 NavigationLink(destination: MapView()) {
-                    Text("GPS!")
+                    Text("My location")
                 }.padding(.top, 60)
             }
         }

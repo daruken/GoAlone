@@ -11,19 +11,21 @@ import MapKit
 
 struct MapView: UIViewRepresentable {
     var locationManager = CLLocationManager()
-    
+
     func setupManager() {
-      locationManager.desiredAccuracy = kCLLocationAccuracyBest
-      locationManager.requestWhenInUseAuthorization()
-      locationManager.requestAlwaysAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestAlwaysAuthorization()
     }
     
     func makeUIView(context: Context) -> MKMapView {
-      setupManager()
-      let mapView = MKMapView(frame: UIScreen.main.bounds)
-      mapView.showsUserLocation = true
-      mapView.userTrackingMode = .follow
-      return mapView
+        setupManager()
+
+        let mapView = MKMapView(frame: UIScreen.main.bounds)
+        mapView.showsUserLocation = true
+        mapView.userTrackingMode = .follow
+        
+        return mapView
     }
     
     func updateUIView(_ view: MKMapView, context: Context) {
@@ -37,7 +39,6 @@ struct MapView: UIViewRepresentable {
         locationManager.requestWhenInUseAuthorization()
 
         if status == .authorizedAlways || status == .authorizedWhenInUse {
-            
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
             let location: CLLocationCoordinate2D = locationManager.location!.coordinate
@@ -45,11 +46,9 @@ struct MapView: UIViewRepresentable {
             let region = MKCoordinateRegion(center: location, span: span)
             
             view.setRegion(region, animated: true)
-         }
+        }
     }
-
 }
-
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
